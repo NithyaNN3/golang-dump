@@ -1,1 +1,1 @@
-# golang-dump
+# Golang learning guide (for future reference)
