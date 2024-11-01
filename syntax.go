@@ -10,5 +10,7 @@ func main() {
 
 	number := 42 // shorthand version
 
-	fmt.Println(name, age, city, number)
+	const job = "Software engg"
+
+	fmt.Println(name, age, city, number, job)
 }
