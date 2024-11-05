@@ -4,3 +4,4 @@
 3. [Loops](loops.go)
 4. [Functions](func.go)
 5. [Key concepts](keyconcepts.go)
+    - [Structs](https://gobyexample.com/structs)

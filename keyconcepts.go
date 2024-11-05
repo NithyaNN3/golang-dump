@@ -35,5 +35,5 @@ func main() {
 	fmt.Println(person{name: "Alice", age: 23})
 	fmt.Println(person{name: "Alice"})
 	fmt.Println(&person{name: "Alice", age: 24})
-	fmt.Println(&person{name: "Ann", age: 40})
+	fmt.Println(newPerson("Jon"))
 }
