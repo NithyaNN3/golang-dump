@@ -5,3 +5,4 @@
 4. [Functions](func.go)
 5. [Key concepts](keyconcepts.go)
     - [Structs](https://gobyexample.com/structs)
+    - [Concurrency](concurrency.go)
