@@ -31,9 +31,25 @@ func printMessage2(message chan string) {
 	message <- "Hello from Goroutine"
 }
 
+// func main() {
+// 	message := make(chan string)
+// 	go printMessage2(message)
+// 	fmt.Println("Hello from main function")
+// 	fmt.Println(<-message)
+// }
+
+// Adding 10 goroutines
+
+func f(n int) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(n, ":", i)
+	}
+}
+
 func main() {
-	message := make(chan string)
-	go printMessage2(message)
-	fmt.Println("Hello from main function")
-	fmt.Println(<-message)
+	for i := 0; i < 10; i++ {
+		go f(i)
+	}
+	var input string
+	fmt.Scanln(&input)
 }
