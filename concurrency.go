@@ -46,10 +46,35 @@ func f(n int) {
 	}
 }
 
-func main() {
-	for i := 0; i < 10; i++ {
-		go f(i)
+// func main() {
+// 	for i := 0; i < 10; i++ {
+// 		go f(i)
+// 	}
+// 	var input string
+// 	fmt.Scanln(&input)
+// }
+
+// Channels - provide a way in which goroutines can communicate with each other
+func pinger(c chan string) {
+	for i := 0; ; i++ {
+		c <- "ping" // c <- "ping" means send "ping"
 	}
+}
+
+func printer(c chan string) {
+	for {
+		msg := <-c // msg := <- c means receive a message and store it in msg
+		fmt.Println(msg)
+		time.Sleep(time.Second * 1)
+	}
+}
+
+func main() {
+	var c chan string = make(chan string)
+
+	go pinger(c)
+	go printer(c)
+
 	var input string
 	fmt.Scanln(&input)
 }
