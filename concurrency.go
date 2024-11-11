@@ -69,10 +69,18 @@ func printer(c chan string) {
 	}
 }
 
+func ponger(c chan string) {
+	for i := 0; ; i++ {
+		c <- "pong"
+	}
+}
+
 func main() {
 	var c chan string = make(chan string)
 
-	go pinger(c)
+	go pinger(c) // When pinger attempts to send a message on the channel
+	// it will wait until printer is ready to receive the message. (this is known as blocking)
+	go ponger(c)
 	go printer(c)
 
 	var input string
