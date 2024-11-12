@@ -75,14 +75,44 @@ func ponger(c chan string) {
 	}
 }
 
+// func main() {
+// 	var c chan string = make(chan string)
+
+// 	go pinger(c) // When pinger attempts to send a message on the channel
+// 	// it will wait until printer is ready to receive the message. (this is known as blocking)
+// 	go ponger(c)
+// 	go printer(c)
+
+// 	var input string
+// 	fmt.Scanln(&input)
+// }
+
+/*
+Channel direction can be written in this format:
+func pinger(c chan<- string)
+or
+func printer(c <-chan string)
+*/
+
+/* Buffered channels -
+are channels that can send multiple values without requiring a corresponding receive for each value. This is unlike regular channels where
+each send needs a receive
+*/
+
+// Example - make(chan int, 5)
+
 func main() {
-	var c chan string = make(chan string)
+	// Create a buffered channel with capacity of 3
+	ch := make(chan int, 3)
 
-	go pinger(c) // When pinger attempts to send a message on the channel
-	// it will wait until printer is ready to receive the message. (this is known as blocking)
-	go ponger(c)
-	go printer(c)
+	// Send values to the channel
+	ch <- 1
+	ch <- 2
+	ch <- 3
 
-	var input string
-	fmt.Scanln(&input)
+	// The channel is now full, so any additional sends would block
+	// Receiving values
+	fmt.Println(<-ch) // Output: 1
+	fmt.Println(<-ch) // Output: 2
+	fmt.Println(<-ch) // Output: 3
 }
