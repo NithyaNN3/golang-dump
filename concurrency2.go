@@ -16,6 +16,8 @@ func fibonacci(c, quit chan int) {
 	}
 }
 
+//.
+
 func main() {
 	c := make(chan int)
 	quit := make(chan int)
