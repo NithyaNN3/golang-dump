@@ -22,9 +22,9 @@ func main() {
 	http.HandleFunc("/", getRoot) // handler registration, maps / to getRoot and /hello to getHello
 	http.HandleFunc("/hello", getHello)
 
-	err := http.ListenAndServe(":3333", nil)
+	err := http.ListenAndServe(":3333", nil) // routes the http server to port 3333
 
-	if errors.Is(err, http.ErrServerClosed) {
+	if errors.Is(err, http.ErrServerClosed) {  // error handling
 		fmt.Printf("server closed\n")
 	} else if err != nil {
 		fmt.Printf("error starting server: %s\n", err)
