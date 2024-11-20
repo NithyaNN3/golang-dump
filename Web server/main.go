@@ -9,17 +9,17 @@ import (
 )
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("got / request\n")
-	io.WriteString(w, "This is my website!\n")
+	fmt.Printf("got / request\n") // Message logged on the server console
+	io.WriteString(w, "This is my website!\n")  // response
 }
 
 func getHello(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("got /hello request\n")
-	io.WriteString(w, "Hello, HTTP\n")
+	fmt.Printf("got /hello request\n")  // Message logged on the server console
+	io.WriteString(w, "Hello, HTTP\n")  // response 
 }
 
 func main() {
-	http.HandleFunc("/", getRoot)
+	http.HandleFunc("/", getRoot) // handler registration, maps / to getRoot and /hello to getHello
 	http.HandleFunc("/hello", getHello)
 
 	err := http.ListenAndServe(":3333", nil)
