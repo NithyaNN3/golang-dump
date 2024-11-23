@@ -22,15 +22,15 @@ func printCommandEvent(analyticsChannel <-chan *slacker.CommandEvent) {
 
 func main() {
 
-	bot := slacker.NewClient(os.Getenv("SLACK_BOT_TOKEN"), os.Getenv("SLACK_APP_TOKEN"))
+	bot := slacker.NewClient(os.Getenv("SLACK_BOT_TOKEN"), os.Getenv("SLACK_APP_TOKEN"))  // initialise the bot 
 
-	go printCommandEvent(bot.CommandEvents())
+	go printCommandEvent(bot.CommandEvents())  // spawn a goroutine for command analytics
 
 	bot.Command("this is the joke: <joke>", &slacker.CommandDefinition){
 		Description:
 	}
 
-	ctx, cancel := context.WithCancel(context.Background())
+	ctx, cancel := context.WithCancel(context.Background())  // context for graceful shutdown
 	defer cancel()
 
 	err := bot.Listen(ctx)
