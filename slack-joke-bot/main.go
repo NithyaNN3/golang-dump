@@ -33,7 +33,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())  // context for graceful shutdown
 	defer cancel()
 
-	err := bot.Listen(ctx)
+	err := bot.Listen(ctx)  // start listening
 	if err != nil {
 		log.Fatal(err)
 	}
